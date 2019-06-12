@@ -11,6 +11,6 @@ export class FlightsStatusService {
 
   public getFlightsStatus(): Observable<any> {
     // TODO: use real backend API
-    return this.http.get('./assets/mocks/AMS-KBP-2019-06-12.json');
+    return this.http.get('./assets/mocks/AMS-2019-06-12.json');
   }
 }

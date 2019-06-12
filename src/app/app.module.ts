@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { FlightsStatusComponent } from './flights-status/flights-status.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PaginationComponent } from './pagination/pagination.component';
+import { FlightStatusTableComponent } from './flight-status-table/flight-status-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FlightsStatusComponent
+    FlightsStatusComponent,
+    PaginationComponent,
+    FlightStatusTableComponent
   ],
   imports: [
     BrowserModule,

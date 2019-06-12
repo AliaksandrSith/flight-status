@@ -8,14 +8,31 @@ import { FlightsStatusService } from '../common/services/flights-status.service'
 })
 export class FlightsStatusComponent implements OnInit {
 
+  allFlights: any;
+  page: any;
   flights: any;
 
-  constructor(private flightStatusService: FlightsStatusService) { }
+  constructor(private flightStatusService: FlightsStatusService) {
+
+  }
 
   ngOnInit() {
     this.flightStatusService.getFlightsStatus().subscribe( (data) => {
-      this.flights = data.operationalFlights;
+      this.page = data.page;
+      this.allFlights = data.operationalFlights;
+
+      this.setFlights();
     });
   }
 
+  displayPage(i) {
+    this.page.pageNumber = i;
+    this.setFlights();
+    console.log('!!! display parent page', i);
+  }
+
+  private setFlights() {
+    this.flights = this.allFlights.slice(this.page.pageNumber * this.page.pageSize,
+      Math.min(this.page.fullCount, (this.page.pageNumber + 1) * this.page.pageSize));
+  }
 }
