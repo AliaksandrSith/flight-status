@@ -1,12 +1,12 @@
 <nav *ngIf="page" aria-label="Page navigation">
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
       <li class="page-item">
         <!-- <a class="page-link" href="#" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
           <span class="sr-only">Previous</span>
         </a> -->
       </li>
-      <li class="page-item" *ngFor="let item of [].constructor(page.totalPages); let i = index;">
+      <li class="page-item"  [ngClass]="{'active': page.pageNumber === i}" *ngFor="let item of [].constructor(page.totalPages); let i = index;">
         <a class="page-link" (click)="displayPage(i)" href="javascript:void(0);" >{{ i + 1 }}</a>
       </li>
       <!-- <li class="page-item">

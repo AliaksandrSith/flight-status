@@ -28,7 +28,6 @@ export class FlightsStatusComponent implements OnInit {
   displayPage(i) {
     this.page.pageNumber = i;
     this.setFlights();
-    console.log('!!! display parent page', i);
   }
 
   private setFlights() {
