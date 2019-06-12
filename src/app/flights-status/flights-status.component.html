@@ -12,26 +12,18 @@
     </tr>
   </thead>
   <tbody >
-    <tr>
-      <td>9:30</td>
-      <td>AMS</td>
-      <td>KBP</td>
-      <td>KL1385</td>
-      <td>status1</td>
-    </tr>
-    <tr>
-      <td>9:30</td>
-      <td>AMS</td>
-      <td>KBP</td>
-      <td>KL1385</td>
-      <td>status1</td>
-    </tr>
-    <tr>
-      <td>9:30</td>
-      <td>AMS</td>
-      <td>KBP</td>
-      <td>KL1385</td>
-      <td>status1</td>
+    <tr *ngFor="let flight of flights">
+        <td>
+            <ul class="list-group">
+              <li *ngFor="let leg of flight.flightLegs">
+                {{ leg.departureInformation.times.scheduled }}
+              </li>
+            </ul>
+          </td>
+      <td>{{ flight.route[0] }}</td>
+      <td>{{ flight.route[1] }}</td>
+      <td>{{ flight.flightNumber }}</td>
+      <td>{{ flight.flightStatusPublic}}</td>
     </tr>
   </tbody>
 </table>

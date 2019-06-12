@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightsStatusService } from '../common/services/flights-status.service';
 
 @Component({
   selector: 'app-flights-status',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightsStatusComponent implements OnInit {
 
-  constructor() { }
+  flights: any;
+
+  constructor(private flightStatusService: FlightsStatusService) { }
 
   ngOnInit() {
+    this.flightStatusService.getFlightsStatus().subscribe( (data) => {
+      this.flights = data.operationalFlights;
+    });
   }
 
 }
