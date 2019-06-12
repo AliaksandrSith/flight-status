@@ -1,2 +1,16 @@
+<div>
+    Date: 12.06
+</div>
+<div>
+  Departure AMS
+</div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Destination:</span>
+    </div>
+    <input [(ngModel)]="destFilter" (ngModelChange)="filterOnDestination($event)" type="text" class="form-control small-input" placeholder="BCN" aria-label="Destination:" aria-describedby="basic-addon1" maxlength="3">
+  </div>
+
 <app-flight-status-table [flights]="flights"></app-flight-status-table>
 <app-pagination [page]="page" (eventEmitter)="displayPage($event)"></app-pagination>

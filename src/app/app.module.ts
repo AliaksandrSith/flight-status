@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FlightStatusTableComponent } from './flight-status-table/flight-status-table.component';
 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,8 @@ import { FlightStatusTableComponent } from './flight-status-table/flight-status-
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule
   ],

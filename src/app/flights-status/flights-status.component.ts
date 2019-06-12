@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Input} from '@angular/core';
 import { FlightsStatusService } from '../common/services/flights-status.service';
 
 @Component({
@@ -11,6 +11,10 @@ export class FlightsStatusComponent implements OnInit {
   allFlights: any;
   page: any;
   flights: any;
+  filteredFlights: any;
+
+  @Input()
+  destFilter: string;
 
   constructor(private flightStatusService: FlightsStatusService) {
 
@@ -30,8 +34,22 @@ export class FlightsStatusComponent implements OnInit {
     this.setFlights();
   }
 
+  filterOnDestination(dest) {
+    this.page.pageNumber = 0;
+    this.setFlights();
+  }
+
   private setFlights() {
-    this.flights = this.allFlights.slice(this.page.pageNumber * this.page.pageSize,
+    if (this.destFilter) {
+      this.filteredFlights = this.allFlights.filter((flight) => {
+        return flight.route[1].indexOf(this.destFilter) !== -1;
+      });
+      } else {
+      this.filteredFlights = this.allFlights;
+    }
+    this.page.totalPages = Math.ceil(this.filteredFlights.length / this.page.pageSize);
+
+    this.flights = this.filteredFlights.slice(this.page.pageNumber * this.page.pageSize,
       Math.min(this.page.fullCount, (this.page.pageNumber + 1) * this.page.pageSize));
   }
 }
