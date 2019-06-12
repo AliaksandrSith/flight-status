@@ -16,13 +16,13 @@
         <td>
             <ul class="list-group">
               <li *ngFor="let leg of flight.flightLegs">
-                {{ leg.departureInformation.times.scheduled }}
+                {{ leg.departureInformation.times.scheduled | date:'shortTime'}}
               </li>
             </ul>
           </td>
       <td>{{ flight.route[0] }}</td>
       <td>{{ flight.route[1] }}</td>
-      <td>{{ flight.flightNumber }}</td>
+      <td>{{ flight.airline.code }}{{ flight.flightNumber }}</td>
       <td>{{ flight.flightStatusPublic}}</td>
     </tr>
   </tbody>
